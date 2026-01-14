@@ -1,36 +1,36 @@
 # Person Re-Identification: A Strong Baseline & Bag of Tricks
 
-**Course:** Signal, Image and Video | [cite_start]**University:** University of Trento [cite: 3]  
-[cite_start]**Authors:** Andrea Tomasoni and Michele Lamon [cite: 2]
+**Course:** Signal, Image and Video | **University:** University of Trento [cite: 3]  
+**Authors:** Andrea Tomasoni and Michele Lamon [cite: 2]
 
 ## 📝 Abstract
 
-[cite_start]This project explores the field of Person Re-Identification (ReID), the task of correctly matching individuals across different camera views[cite: 7]. [cite_start]The primary goal was to replicate the state-of-the-art techniques presented by Luo et al. in *Bag of Tricks and a Strong Baseline for Deep Person Re-identification*[cite: 9, 10].
+This project explores the field of Person Re-Identification (ReID), the task of correctly matching individuals across different camera views[cite: 7]. The primary goal was to replicate the state-of-the-art techniques presented by Luo et al. in *Bag of Tricks and a Strong Baseline for Deep Person Re-identification*[cite: 9, 10].
 
-[cite_start]Starting from a baseline Open-ReID library, we progressively implemented six specific training "tricks" to enhance performance[cite: 11, 13]. [cite_start]Additionally, we developed a real-time application integrating the ReID model with YOLOv7 for identifying people in live video feeds[cite: 17].
+Starting from a baseline Open-ReID library, we progressively implemented six specific training "tricks" to enhance performance[cite: 11, 13]. Additionally, we developed a real-time application integrating the ReID model with YOLOv7 for identifying people in live video feeds[cite: 17].
 
 
 ## 🚀 Methodology
 
-[cite_start]Our model uses a ResNet50 backbone initialized with ImageNet weights[cite: 52]. We implemented the following pipeline modifications to achieve our results:
+Our model uses a ResNet50 backbone initialized with ImageNet weights[cite: 52]. We implemented the following pipeline modifications to achieve our results:
 
-1.  [cite_start]**Warm-up Learning Rate:** Linearly increasing learning rate for the first 10 epochs to improve generalization[cite: 68].
-2.  [cite_start]**Random Erasing Augmentation (REA):** Randomly occluding parts of the image to increase robustness against partial occlusions[cite: 77].
-3.  [cite_start]**Label Smoothing (LS):** Preventing overfitting by making the model less confident on training classification tasks[cite: 92].
-4.  [cite_start]**Last Stride = 1:** Removed spatial downsampling in the final layer to capture more detailed features ($16 \times 8$ feature map)[cite: 106].
-5.  [cite_start]**BNNeck:** Adding a Batch Normalization layer between features and the classifier to balance Triplet Loss and Cross-Entropy Loss[cite: 127].
-6.  [cite_start]**Center Loss:** Minimizing intra-class variation to encourage feature clustering[cite: 140].
+1.  **Warm-up Learning Rate:** Linearly increasing learning rate for the first 10 epochs to improve generalization[cite: 68].
+2.  **Random Erasing Augmentation (REA):** Randomly occluding parts of the image to increase robustness against partial occlusions[cite: 77].
+3.  **Label Smoothing (LS):** Preventing overfitting by making the model less confident on training classification tasks[cite: 92].
+4.  **Last Stride = 1:** Removed spatial downsampling in the final layer to capture more detailed features ($16 \times 8$ feature map)[cite: 106].
+5.  **BNNeck:** Adding a Batch Normalization layer between features and the classifier to balance Triplet Loss and Cross-Entropy Loss[cite: 127].
+6.  **Center Loss:** Minimizing intra-class variation to encourage feature clustering[cite: 140].
 
 ## 📊 Results
 
-[cite_start]We evaluated our model on the **Market1501** and **DukeMTMC-reID** datasets[cite: 15].
+We evaluated our model on the **Market1501** and **DukeMTMC-reID** datasets[cite: 15].
 
 | Metric | Market1501 | DukeMTMC-reID |
 | :--- | :--- | :--- |
-| **Rank-1 Accuracy** | [cite_start]**94.8%** [cite: 179] | [cite_start]71.6% [cite: 180] |
-| **mAP** | [cite_start]**84.0%** [cite: 179] | [cite_start]72.0% [cite: 180] |
+| **Rank-1 Accuracy** | **94.8%** [cite: 179] | 71.6% [cite: 180] |
+| **mAP** | **84.0%** [cite: 179] | 72.0% [cite: 180] |
 
-[cite_start]*Note: Rank-1 accuracy on DukeMTMC-reID was lower than the reference paper, potentially due to dataset characteristics interacting with our specific architecture[cite: 171, 172].*
+*Note: Rank-1 accuracy on DukeMTMC-reID was lower than the reference paper, potentially due to dataset characteristics interacting with our specific architecture[cite: 171, 172].*
 
 ## 🛠️ Environment Setup
 
@@ -71,7 +71,7 @@ Select the requirements file based on your hardware configuration:
     python3 -m pip install -r requirementsMAC.txt
     ```
 
-*Note: Hardware acceleration (GPU) is highly recommended. [cite_start]The code requires Torch with hardware acceleration enabled to function correctly[cite: 1].*
+*Note: Hardware acceleration (GPU) is highly recommended. The code requires Torch with hardware acceleration enabled to function correctly[cite: 1].*
 
 ### 4. Install the Library
 You must install the open-source library with our custom modifications. **Important:** This step must be repeated every time you modify the source code to ensure changes are applied.
@@ -81,7 +81,7 @@ python3 setup.py install
 
 ## 📂 Datasets
 
-[cite_start]Please download the **Market1501** and **DukeMTMC-reID** datasets [cite: 15] and extract them into your data directory.
+Please download the **Market1501** and **DukeMTMC-reID** datasets [cite: 15] and extract them into your data directory.
 [Download Datasets via Google Drive](https://drive.google.com/drive/folders/1pTjMzG4aoc4MgSCrXbQocREQG_HDSMWq?usp=sharing)
 
 ## 🏃 Usage
@@ -116,11 +116,11 @@ python3 triplet_loss.py -t 6 --combine-trainval
 | `--width [int]` | Input image width (default: 128). |
 
 ### Real-Time Application
-[cite_start]We developed a real-time identification application that integrates **YOLOv7-tiny** (via OpenCV) for person detection and our ReID model for identity feature extraction[cite: 315]. [cite_start]The application processes individual frames from a webcam feed to identify individuals[cite: 320].
+We developed a real-time identification application that integrates **YOLOv7-tiny** (via OpenCV) for person detection and our ReID model for identity feature extraction[cite: 315]. The application processes individual frames from a webcam feed to identify individuals[cite: 320].
 
-* [cite_start]**Detection:** YOLOv7-tiny locates people in the video frame[cite: 315, 320].
-* [cite_start]**Identification:** Bounding boxes are cropped and fed into the ReID model to extract feature vectors[cite: 321]. [cite_start]These vectors are compared using cosine similarity; if a match is found below a threshold, the existing ID is retrieved, otherwise a new ID is assigned[cite: 322, 323].
-* [cite_start]**Interface:** A **PyQt6** GUI displays the video feed with bounding boxes and ID labels, along with a counter for the total number of people detected[cite: 316, 325, 326].
+* **Detection:** YOLOv7-tiny locates people in the video frame[cite: 315, 320].
+* **Identification:** Bounding boxes are cropped and fed into the ReID model to extract feature vectors[cite: 321]. These vectors are compared using cosine similarity; if a match is found below a threshold, the existing ID is retrieved, otherwise a new ID is assigned[cite: 322, 323].
+* **Interface:** A **PyQt6** GUI displays the video feed with bounding boxes and ID labels, along with a counter for the total number of people detected[cite: 316, 325, 326].
 
 To run the application (ensure your webcam is connected):
 ```bash
@@ -130,8 +130,8 @@ python3 app/appYolo.py
 
 If you use this code or findings, please credit our project report and the original baseline paper:
 
-* [cite_start]**Project Report:** [Signal, Image and Video Project Report](https://github.com/andreaunitn/Signal-Image-and-Video-Project/files/12252926/SIV.pdf) [cite: 1]
-* [cite_start]**Original Paper:** *Bag of Tricks and a Strong Baseline for Deep Person Re-identification*, H. Luo et al., CVPR Workshops, 2019. [cite: 10, 439]
+* **Project Report:** [Signal, Image and Video Project Report](https://github.com/andreaunitn/Signal-Image-and-Video-Project/files/12252926/SIV.pdf) [cite: 1]
+* **Original Paper:** *Bag of Tricks and a Strong Baseline for Deep Person Re-identification*, H. Luo et al., CVPR Workshops, 2019. [cite: 10, 439]
 
 **BibTeX:**
 ```bibtex
