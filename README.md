@@ -1,5 +1,11 @@
 # Person Re-Identification: A Strong Baseline & Bag of Tricks
 
+<div align="center">
+  <img src="docs/figures/SIV.png" alt="SIV" width="60%">
+</div>
+
+<br>
+
 **Course:** Signal, Image and Video | University of Trento
 
 **Authors:** Andrea Tomasoni and Michele Lamon
