@@ -1,11 +1,5 @@
 # Person Re-Identification: A Strong Baseline & Bag of Tricks
 
-<div align="center">
-  <img src="docs/figures/SIV.png" alt="SIV" width="60%">
-</div>
-
-<br>
-
 **Course:** Signal, Image and Video | University of Trento
 
 **Authors:** Andrea Tomasoni and Michele Lamon
@@ -36,6 +30,13 @@ We evaluated our model on the **Market1501** and **DukeMTMC-reID** datasets.
 | :--- | :--- | :--- |
 | **Rank-1 Accuracy** | **94.8%** | 71.6% |
 | **mAP** | **84.0%** | 72.0% |
+
+<div align="center">
+  <img src="docs/figures/SIV.png" alt="SIV" width="60%">
+</div>
+
+<br>
+
 
 *Note: Rank-1 accuracy on DukeMTMC-reID was lower than the reference paper, potentially due to dataset characteristics interacting with our specific architecture.*
 
